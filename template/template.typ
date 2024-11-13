@@ -1,6 +1,8 @@
 #import "@preview/fontawesome:0.5.0": *
+#import "@preview/cades:0.3.0": qr-code
+#import "@preview/wrap-it:0.1.0": wrap-content
 
-#let version = "1.1"
+#let version = "1.2"
 
 #let entry(title, body, details) = [
     #heading(level: 2, title)
@@ -39,7 +41,7 @@
       )
     ]
   )
-  set text(font: "Noto Serif", size: 10pt)
+  set text(font: "Noto Sans", size: 10pt)
   set block(above: 0pt, below: 0pt)
   set par(justify: true)
 
