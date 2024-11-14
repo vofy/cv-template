@@ -2,8 +2,8 @@
 #import "@preview/cades:0.3.0": qr-code
 #import "@preview/wrap-it:0.1.0": wrap-content
 
-#let version = "1.3"
-#let lang = "en"
+#let version = "1.4"
+#let lang = "cs"
 
 #let entry(title, body, details) = [
   #heading(level: 2, title)
@@ -41,7 +41,7 @@
           "1/1",
           both: true,
         )),
-        align(right, [Version: #datetime.today().display("[day].[month].[year]") | #if lang == "cs" {lang} else {"en"}])
+        align(right, [Export: #datetime.today().display("[day].[month].[year]") (#if lang == "cs" {lang} else {"en"})])
       )
     ]
   )
