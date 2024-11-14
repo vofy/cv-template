@@ -1,2 +1,2 @@
 # CV template
-This repository stores template for my CV. Feel free to use it as too.
+This repository stores template for my CV. Feel free to use it too.
