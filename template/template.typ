@@ -2,7 +2,7 @@
 #import "@preview/cades:0.3.0": qr-code
 #import "@preview/wrap-it:0.1.0": wrap-content
 
-#let version = "1.4"
+#let version = "1.5"
 #let lang = "cs"
 
 #let entry(title, body, details) = [
@@ -50,7 +50,7 @@
   set par(justify: true)
 
   grid(
-    columns: (2fr, 5fr),
+    columns: (1fr, 2fr),
     block(
       {
         square(
