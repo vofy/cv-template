@@ -2,13 +2,17 @@
 #import "@preview/cades:0.3.0": qr-code
 #import "@preview/wrap-it:0.1.0": wrap-content
 
-#let version = "1.2"
+#let version = "1.3"
+#let lang = "en"
 
 #let entry(title, body, details) = [
-    #heading(level: 2, title)
-    #block(inset: (right: 2em), body)
+  #heading(level: 2, title)
+  #block(inset: (right: 2em), body)
+  #block(above: 0.7em, text(fill: gray, details))
+]
 
-    #block(above: 0.7em, text(fill: gray, details))
+#let __(cs, en) = [
+  #if lang == "cs" {eval(cs, mode: "markup")} else {eval(en, mode: "markup")}
 ]
 
 #let chip(body) = [
@@ -24,7 +28,7 @@
 
 #let resume(name: "", about: "", accent-color: rgb("111"), aside: [], body) = {
   let margin = 16pt
-  let header_height = 100pt
+  let header_height = 125pt
   set page(
     margin: (bottom: 32pt, rest: 0pt), 
     background: place(top + left, rect(fill: accent-color, width: 100%, height: header_height)),
@@ -32,12 +36,12 @@
       #grid(
         columns: (2fr, 1fr, 2fr),
         inset: (left: margin, right: margin, bottom: margin),
-        link("https://github.com/vofy/cv-template")[Šablona vofy/cv-template-#text(version) #fa-icon("github")],
+        link("https://github.com/vofy/cv-template")[Template: vofy/cv-template-#text(version) #fa-icon("github")],
         align(center, counter(page).display(
           "1/1",
           both: true,
         )),
-        align(right, [Exportováno dne: #datetime.today().display("[day].[month].[year]")])
+        align(right, [Version: #datetime.today().display("[day].[month].[year]") | #if lang == "cs" {lang} else {"en"}])
       )
     ]
   )
@@ -46,7 +50,7 @@
   set par(justify: true)
 
   grid(
-    columns: (1fr, 2fr),
+    columns: (2fr, 5fr),
     block(
       {
         square(
