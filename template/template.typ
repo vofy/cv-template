@@ -76,10 +76,10 @@
         inset: (top: 16pt, right: 16pt),
         {
           show heading.where(level: 1): set text(size: 18pt, fill: rgb("fff"))
-          show heading.where(level: 2): set text(size: 10pt, fill: rgb("fff"), weight: "regular")
-              
           heading(level: 1, upper(name))
-          heading(level: 2, about)
+          
+          show par: set text(size: 10pt, fill: rgb("fff"), weight: "regular")
+          par(about)
         }
       ))
       box(
