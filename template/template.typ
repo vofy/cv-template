@@ -2,7 +2,7 @@
 #import "@preview/cades:0.3.0": qr-code
 #import "@preview/wrap-it:0.1.0": wrap-content
 
-#let version = "1.5"
+#let version = "1.6"
 #let lang = "cs"
 
 #let entry(title, body, details) = [
