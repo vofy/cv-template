@@ -1,18 +1,14 @@
-#import "@preview/fontawesome:0.5.0": *
-#import "@preview/cades:0.3.0": qr-code
-#import "@preview/wrap-it:0.1.0": wrap-content
+#import "@preview/fontawesome:0.6.0": *
+#import "@preview/cades:0.3.1": qr-code
+#import "@preview/wrap-it:0.1.1": wrap-content
 
-#let version = "1.6"
-#let lang = "cs"
+#let version = "1.1"
 
 #let entry(title, body, details) = [
-  #heading(level: 2, title)
-  #block(inset: (right: 2em), body)
-  #block(above: 0.7em, text(fill: gray, details))
-]
+    #heading(level: 2, title)
+    #block(inset: (right: 2em), body)
 
-#let __(cs, en) = [
-  #if lang == "cs" {eval(cs, mode: "markup")} else {eval(en, mode: "markup")}
+    #block(above: 0.7em, text(fill: gray, details))
 ]
 
 #let chip(body) = [
@@ -28,7 +24,7 @@
 
 #let resume(name: "", about: "", accent-color: rgb("111"), aside: [], body) = {
   let margin = 16pt
-  let header_height = 125pt
+  let header_height = 100pt
   set page(
     margin: (bottom: 32pt, rest: 0pt), 
     background: place(top + left, rect(fill: accent-color, width: 100%, height: header_height)),
@@ -36,16 +32,16 @@
       #grid(
         columns: (2fr, 1fr, 2fr),
         inset: (left: margin, right: margin, bottom: margin),
-        link("https://github.com/vofy/cv-template")[Template: vofy/cv-template-#text(version) #fa-icon("github")],
+        link("https://github.com/vofy/cv-template")[Šablona vofy/cv-template-#text(version) #fa-icon("github")],
         align(center, counter(page).display(
           "1/1",
           both: true,
         )),
-        align(right, [Export: #datetime.today().display("[day].[month].[year]") (#if lang == "cs" {lang} else {"en"})])
+        align(right, [Exportováno dne: #datetime.today().display("[day].[month].[year]")])
       )
     ]
   )
-  set text(font: "Noto Sans", size: 10pt)
+  set text(font: "Noto Serif", size: 10pt)
   set block(above: 0pt, below: 0pt)
   set par(justify: true)
 
@@ -76,10 +72,10 @@
         inset: (top: 16pt, right: 16pt),
         {
           show heading.where(level: 1): set text(size: 18pt, fill: rgb("fff"))
+          show heading.where(level: 2): set text(size: 10pt, fill: rgb("fff"), weight: "regular")
+              
           heading(level: 1, upper(name))
-          
-          show par: set text(size: 10pt, fill: rgb("fff"), weight: "regular")
-          par(about)
+          heading(level: 2, about)
         }
       ))
       box(
