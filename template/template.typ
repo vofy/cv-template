@@ -2,8 +2,6 @@
 #import "@preview/cades:0.3.1": qr-code
 #import "@preview/wrap-it:0.1.1": wrap-content
 
-#let version = "1.1"
-
 #let entry(title, body, details) = [
     #heading(level: 2, title)
     #block(inset: (right: 2em), body)
@@ -22,17 +20,23 @@
   #text(black.lighten(50%), "[" + body + "]")
 ]
 
-#let resume(name: "", about: "", accent-color: rgb("111"), aside: [], body) = {
+#let resume(name: "", about: "", accent-color: rgb("fa6000"), aside: [], body) = {
   let margin = 16pt
   let header_height = 100pt
   set page(
     margin: (bottom: 32pt, rest: 0pt), 
-    background: place(top + left, rect(fill: accent-color, width: 100%, height: header_height)),
-    footer: context [
+    background: place(top + left,
+      block(width: 100%, height: header_height)[
+        #rect(fill: rgb("111"), width: 100%, height: header_height)
+        #place(bottom + left,
+          rect(fill: rgb("fa6000"), width: 100%, height: 2pt)
+        )
+      ]
+    ),    footer: context [
       #grid(
         columns: (2fr, 1fr, 2fr),
         inset: (left: margin, right: margin, bottom: margin),
-        link("https://github.com/vofy/cv-template")[Šablona vofy/cv-template-#text(version) #fa-icon("github")],
+        link("https://github.com/vofy/cv-template")[Šablona vofy/cv-template #fa-icon("github")],
         align(center, counter(page).display(
           "1/1",
           both: true,
@@ -41,9 +45,9 @@
       )
     ]
   )
-  set text(font: "Noto Serif", size: 10pt)
+  set text(font: "Liberation Serif", size: 10pt)
   set block(above: 0pt, below: 0pt)
-  set par(justify: true)
+  set par(justify: false)
 
   grid(
     columns: (1fr, 2fr),
