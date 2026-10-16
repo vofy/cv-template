@@ -98,7 +98,10 @@
       grid(
         columns: (2fr, 1fr, 2fr),
         inset: (x: margin, bottom: margin),
-        link("https://github.com/vofy/cv-template")[Šablona: vofy/cv-template #fa-icon("github")],
+        {
+          set underline(stroke: 0pt)
+          link("https://github.com/vofy/cv-template")[Šablona: vofy/cv-template #fa-icon("github")]
+        },
         align(center, counter(page).display("1/1", both: true)),
         align(right)[Exportováno dne: #datetime.today().display("[day].[month].[year]")],
       )
